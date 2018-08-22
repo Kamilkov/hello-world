@@ -1,0 +1,33 @@
+
+REPORT zgit_hello_world.
+
+DATA gv_okcod TYPE syucomm.
+
+AT SELECTION-SCREEN.
+
+START-OF-SELECTION.
+
+END-OF-SELECTION.
+
+  CALL SCREEN 2001.
+
+MODULE status_2001 OUTPUT.
+
+  SET PF-STATUS sy-dynnr.
+
+ENDMODULE.
+
+MODULE user_command_2001 INPUT.
+
+  CASE gv_okcod.
+
+    WHEN 'BACK'
+      OR 'END'
+      OR 'CANC'.
+
+      SET SCREEN 0.
+      LEAVE SCREEN.
+
+  ENDCASE.
+
+ENDMODULE.
